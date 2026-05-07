@@ -15,7 +15,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   return (
     <ReactLenis root>
-      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
+      {/* {!loaded && <Loader onComplete={() => setLoaded(true)} />} */}
       <HeroTwo />
       <Info />
       <MiddleCard />

@@ -6,3 +6,15 @@ toggleActions: "play reverse play reverse",
   },
 });
 toggleActions takes 4 values: "onEnter onLeave onEnterBack onLeaveBack"
+
+
+
+
+style={{
+              background: `
+                radial-gradient(ellipse 80% 60% at 50% 0%,   #E8A020 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 100% 60%, #D4006A 0%, transparent 55%),
+                radial-gradient(ellipse 90% 90% at 50% 50%, #B52010 0%, #7A0010 100%)
+              `,
+              willChange: "transform",
+            }}

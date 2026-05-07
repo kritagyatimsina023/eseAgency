@@ -85,29 +85,19 @@ const MarqueeStrip = ({ text }) => {
       <div
         ref={ref}
         className="flex whitespace-nowrap cursor-pointer"
-        onMouseEnter={() => {
-          setHovered(true);
-          // tweenRef.current?.pause();
-        }}
-        onMouseLeave={() => {
-          setHovered(false);
-          // tweenRef.current?.play();
-        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         {[...Array(10)].map((_, i) => (
           <span
             key={i}
-            className={`"shrink-0 font-suisse text-9xl  font-medium   ${
+            className={`shrink-0 font-suisse font-medium transition-all duration-500 ${
               hovered
-                ? `
-                    text-transparent
-                    opacity-50
-                    [-webkit-text-stroke:2px_white]
-                  `
+                ? "text-transparent opacity-50 [-webkit-text-stroke:2px_white]"
                 : "text-white opacity-100"
-            } transition-all duration-500"`}
+            }`}
             style={{
-              // fontSize: "clamp(3.5rem, 8vw, 8rem)",
+              fontSize: "clamp(2.5rem, 7vw, 8rem)", // ✅ responsive font size
               lineHeight: 1,
               marginRight: "2.5rem",
             }}
@@ -179,7 +169,6 @@ const MiddleCard = () => {
             end: `top+=${endPx}px top`,
             scrub: 0.5,
             invalidateOnRefresh: true,
-
             onLeave: () => gsap.set(fill, { width: "100%" }),
             onEnterBack: () => gsap.set(fill, { width: "100%" }),
             onLeaveBack: () => {
@@ -195,19 +184,19 @@ const MiddleCard = () => {
 
   return (
     <div
-      className="bg-black py-20"
+      className="bg-black"
       ref={outerRef}
       style={{ height: `${totalScrollVh * 100}vh` }}
     >
       <div
         ref={stickyRef}
-        className="sticky top-0 h-screen w-full overflow-hidden"
+        className="sticky bg-black top-0 h-screen w-full overflow-hidden"
       >
         {cards.map((card, idx) => (
           <div
             key={card.id}
             ref={(el) => (cardsRef.current[idx] = el)}
-            className="absolute inset-0 w-full h-full flex flex-col"
+            className="absolute inset-0 w-full h-full"
             style={{
               background: `
                 radial-gradient(ellipse 80% 60% at 50% 0%,   #E8A020 0%, transparent 60%),
@@ -217,31 +206,41 @@ const MiddleCard = () => {
               willChange: "transform",
             }}
           >
-            <div className="flex-1 flex items-center justify-center px-8 min-h-0">
-              <div
-                className="rounded-2xl overflow-hidden shadow-2xl"
-                style={{ Width: "100vh", maxHeight: "100%" }}
-              >
-                <img
-                  src={card.src}
-                  alt={card.label}
-                  className="w-full h-full object-cover block"
-                  draggable={false}
-                />
-              </div>
-            </div>
-            <p className="text-white  text-xl font-semibold px-7 pt-8 shrink-0">
+            {/* ✅ Full-bleed image */}
+            <img
+              src={card.src}
+              alt={card.label}
+              className="absolute inset-0 w-full h-full object-cover"
+              draggable={false}
+            />
+
+            {/* ✅ Gradient overlay so text stays legible */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.75) 100%)",
+              }}
+            />
+
+            {/* ✅ Label pinned above marquee */}
+            <p
+              className="absolute z-10 text-white font-semibold px-7 text-xl sm:text-2xl md:text-3xl"
+              style={{ bottom: "calc(1em + clamp(2.5rem, 7vw, 8rem) + 16px)" }}
+            >
               {card.label}
             </p>
 
-            <div className="shrink-0" style={{ paddingBottom: "52px" }}>
+            {/* ✅ Marquee pinned to bottom */}
+            <div className="absolute bottom-10 left-0 w-full z-10 pb-2">
               <MarqueeStrip text={card.marquee} />
             </div>
           </div>
         ))}
 
+        {/* Progress bars */}
         <div
-          className="absolute bottom-0 left-0 w-full flex gap-2 px-7 pb-5"
+          className="absolute bottom-0 left-0 w-full flex gap-2 px-7 pb-4"
           style={{ zIndex: 50 }}
         >
           {cards.map((_, i) => (

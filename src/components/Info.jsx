@@ -132,7 +132,7 @@ const Info = () => {
           </div>
         </button>
       </div>
-      <div className="mt-30">
+      <div className="my-30">
         <Description text={text2} />
       </div>
       {/* <Brands /> */}

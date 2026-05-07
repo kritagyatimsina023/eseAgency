@@ -155,7 +155,7 @@ const VideoComponent = () => {
   }, []);
 
   return (
-    <section className="min-h-screen w-full flex items-center justify-center bg-black px-3 sm:px-4 py-8 sm:py-10">
+    <section className="min-h-screen w-full flex items-center justify-center bg-black px-3 sm:px-4 ">
       <div className="relative w-full sm:mx-4 md:mx-7 rounded-2xl md:rounded-4xl overflow-hidden">
         <div
           ref={videoWrapperRef}

@@ -53,7 +53,7 @@ const Brands = () => {
 
   return (
     <section className="min-h-screen bg-black text-white">
-      <div className="md:mx-7 px-7 py-45">
+      <div className="md:mx-7 px-7 py-2">
         <h1 className="text-5xl mt-20">
           Together we are <br />
           achieving great things
