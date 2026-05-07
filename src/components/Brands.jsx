@@ -53,15 +53,15 @@ const Brands = () => {
 
   return (
     <section className="min-h-screen bg-black text-white">
-      <div className="md:mx-7 px-7 py-2">
-        <h1 className="text-5xl mt-20">
+      <div className="md:mx-7 px-7 md:py-40 pt-25 md:pt-40">
+        <h1 className="text-5xl mt-10">
           Together we are <br />
           achieving great things
         </h1>
         <div className="mt-8 overflow-hidden">
           <div
             ref={brandSectionRef}
-            className="grid grid-cols-3 cursor-pointer overflow-hidden gap-3 md:grid-cols-4 lg:grid-cols-5 py-4"
+            className="grid grid-cols-3  cursor-pointer overflow-hidden gap-3 md:grid-cols-4 lg:grid-cols-5"
           >
             {[...Array(15)].map((_, idx) => (
               <div

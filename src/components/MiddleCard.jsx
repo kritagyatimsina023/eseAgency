@@ -206,7 +206,6 @@ const MiddleCard = () => {
               willChange: "transform",
             }}
           >
-            {/* ✅ Full-bleed image */}
             <img
               src={card.src}
               alt={card.label}
@@ -214,7 +213,6 @@ const MiddleCard = () => {
               draggable={false}
             />
 
-            {/* ✅ Gradient overlay so text stays legible */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -223,15 +221,13 @@ const MiddleCard = () => {
               }}
             />
 
-            {/* ✅ Label pinned above marquee */}
             <p
-              className="absolute z-10 text-white font-semibold px-7 text-xl sm:text-2xl md:text-3xl"
+              className="absolute mb-10 z-10 text-white font-semibold  px-7 text-xl sm:text-2xl md:text-3xl"
               style={{ bottom: "calc(1em + clamp(2.5rem, 7vw, 8rem) + 16px)" }}
             >
               {card.label}
             </p>
 
-            {/* ✅ Marquee pinned to bottom */}
             <div className="absolute bottom-10 left-0 w-full z-10 pb-2">
               <MarqueeStrip text={card.marquee} />
             </div>
