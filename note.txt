@@ -1,0 +1,8 @@
+toggleActions: "play reverse play reverse",
+    //                      ↑ scroll down: play
+    //                               ↑ scroll back up past start: reverse
+    //                                        ↑ scroll down again: play again
+    //                                                  ↑ scroll up past end: reverse
+  },
+});
+toggleActions takes 4 values: "onEnter onLeave onEnterBack onLeaveBack"

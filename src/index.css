@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+html {
+  background-color: #222222;
+  /* scroll-snap-type: y mandatory; */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 75s linear infinite;
+  width: max-content;
+  will-change: transform;
+}
+
+@font-face {
+  font-family: "SuisseIntl";
+  src: url("src/fonts/suisse/SuisseNeueTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SuisseIntl";
+  src: url("/fonts/SuisseNeueTrial-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-suisse {
+  font-family: "SuisseIntl", sans-serif;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.char {
+  display: inline-block;
+}
+
+.loader-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.9);
+  animation: spin 0.8s linear infinite;
+}
+@media (min-width: 640px) {
+  .loader-ring {
+    width: 52px;
+    height: 52px;
+    border-width: 4px;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
