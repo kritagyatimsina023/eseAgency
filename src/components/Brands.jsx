@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,21 +12,24 @@ const Brands = () => {
   useGSAP(() => {
     if (!brandRef.current.length) return;
 
-    gsap.set(brandRef.current, { yPercent: -50, opacity: 0 });
-
-    gsap.to(brandRef.current, {
-      yPercent: 0,
-      opacity: 1,
-      duration: 0.2,
-      ease: "power3.out",
-      stagger: { each: 0.1, from: "start" },
-      scrollTrigger: {
-        trigger: brandSectionRef.current,
-        start: "50% 80%",
-        end: "170% top",
-        toggleActions: "play reverse play reverse",
+    gsap.fromTo(
+      brandRef.current,
+      { yPercent: -50, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power3.out",
+        stagger: { each: 0.08, from: "start" },
+        scrollTrigger: {
+          trigger: brandSectionRef.current,
+          start: "70% 80%",
+          end: "170% top",
+          // markers: true,
+          toggleActions: "play reverse play reverse",
+        },
       },
-    });
+    );
   }, []);
 
   const handleMouseEnter = (idx) => {
@@ -44,12 +47,7 @@ const Brands = () => {
   const handleMouseLeave = () => {
     brandRef.current.forEach((el) => {
       if (!el) return;
-      gsap.to(el, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+      gsap.to(el, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
     });
   };
 
@@ -60,10 +58,10 @@ const Brands = () => {
           Together we are <br />
           achieving great things
         </h1>
-        <div className="mt-8">
+        <div className="mt-8 overflow-hidden">
           <div
             ref={brandSectionRef}
-            className="grid grid-cols-3 cursor-pointer gap-3 md:grid-cols-4 lg:grid-cols-5 overflow-hidden"
+            className="grid grid-cols-3 cursor-pointer overflow-hidden gap-3 md:grid-cols-4 lg:grid-cols-5 py-4"
           >
             {[...Array(15)].map((_, idx) => (
               <div
@@ -71,7 +69,7 @@ const Brands = () => {
                 key={idx}
                 onMouseEnter={() => handleMouseEnter(idx)}
                 onMouseLeave={handleMouseLeave}
-                className="bg-[#212121] rounded-lg max-w-80"
+                className="bg-[#212121] overflow-hidden rounded-lg max-w-80"
               >
                 <img src="/WebXProjectsAssets/Brands/kellerBrand.png" alt="" />
               </div>

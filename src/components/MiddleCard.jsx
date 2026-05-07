@@ -97,7 +97,7 @@ const MarqueeStrip = ({ text }) => {
         {[...Array(10)].map((_, i) => (
           <span
             key={i}
-            className={`"shrink-0 font-suisse  font-medium   ${
+            className={`"shrink-0 font-suisse text-9xl  font-medium   ${
               hovered
                 ? `
                     text-transparent
@@ -107,11 +107,9 @@ const MarqueeStrip = ({ text }) => {
                 : "text-white opacity-100"
             } transition-all duration-500"`}
             style={{
-              fontSize: "clamp(3.5rem, 8vw, 8rem)",
+              // fontSize: "clamp(3.5rem, 8vw, 8rem)",
               lineHeight: 1,
               marginRight: "2.5rem",
-              // color: hovered ? "transparent" : "white",
-              // WebkitTextStroke: hovered ? "2px white" : "0px",
             }}
           >
             {text}

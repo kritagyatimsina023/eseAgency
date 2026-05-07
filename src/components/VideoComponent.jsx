@@ -162,7 +162,6 @@ const VideoComponent = () => {
           className="relative w-full"
           style={{ borderRadius: "inherit" }}
         >
-          {/* ── Video ── */}
           <video
             ref={videoRef}
             className="w-full h-[70vw] sm:h-[60vw] md:h-[50vw] lg:h-[720px] object-cover opacity-80 block"
@@ -174,7 +173,6 @@ const VideoComponent = () => {
             src={cardsData[0].videoSrc}
           />
 
-          {/* ── Loader overlay ── */}
           <div
             ref={loaderRef}
             style={{
@@ -193,7 +191,6 @@ const VideoComponent = () => {
             <div className="loader-ring" />
           </div>
 
-          {/* ── Top-right controls ── */}
           <div className="absolute top-2.5 right-2.5 sm:top-5 sm:right-5 flex gap-1.5 sm:gap-3 text-white z-20">
             <button
               onClick={handlePlayPause}
@@ -294,7 +291,6 @@ const VideoComponent = () => {
                       />
                     </div>
 
-                    {/* Name + role — hidden on very small screens to save space */}
                     <div className="flex flex-col flex-shrink-0 hidden xs:flex sm:flex">
                       <span
                         className="text-white whitespace-nowrap
